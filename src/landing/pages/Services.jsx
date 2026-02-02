@@ -1,0 +1,131 @@
+import { motion } from 'framer-motion';
+import { 
+  HiOutlineChartBar, HiOutlineSearch, HiOutlineCode, HiOutlinePencilAlt, 
+  HiOutlineUserGroup, HiOutlineDocumentText, HiOutlineLightningBolt, 
+  HiOutlineMail, HiOutlineDeviceMobile, HiOutlinePresentationChartLine, 
+  HiOutlineLightBulb 
+} from 'react-icons/hi';
+
+const Services = () => {
+  const allServices = [
+    {
+      title: 'Performance Marketing',
+      description: 'We plan, launch, and optimize high-impact paid advertising campaigns focused on measurable results. From lead generation to e-commerce sales and app installs, our campaigns are driven by data, testing, and continuous optimization.',
+      icon: <HiOutlineChartBar />,
+      platforms: ['Meta Ads', 'Google Ads', 'TikTok Ads', 'LinkedIn Ads']
+    },
+    {
+      title: 'Search Engine Optimization (SEO)',
+      description: 'We help your business rank higher on search engines and attract quality organic traffic that converts. Covers keyword research, on-page optimization, technical SEO, content optimization, and link building.',
+      icon: <HiOutlineSearch />,
+      tag: 'Sustainable Growth'
+    },
+    {
+      title: 'Web Design & Development',
+      description: 'We design and build fast, responsive, and conversion-focused websites. From landing pages to full corporate websites and e-commerce platforms, we prioritize UX, speed, and scalability.',
+      icon: <HiOutlineCode />,
+      tag: 'SEO-Ready'
+    },
+    {
+      title: 'Brand Design & Creative',
+      description: 'We create visually compelling designs that communicate your brand clearly. Includes identity design, UI/UX, ad creatives, social media graphics, and marketing visuals.',
+      icon: <HiOutlinePencilAlt />
+    },
+    {
+      title: 'Social Media Marketing',
+      description: 'Develop strategies that grow your audience, increase engagement, and support sales goals. From content planning to community management and paid social.',
+      icon: <HiOutlineUserGroup />
+    },
+    {
+      title: 'Content Marketing',
+      description: 'Craft high-quality content that attracts, educates, and converts your ideal audience. Blog articles, website copy, landing page content, and video scripts.',
+      icon: <HiOutlineDocumentText />
+    },
+    {
+      title: 'Conversion Rate Optimization',
+      description: 'Refine your funnel to get more results from existing traffic using analytics, heatmaps, and A/B testing to improve UX and increase conversions.',
+      icon: <HiOutlineLightningBolt />
+    },
+    {
+      title: 'Email & CRM Marketing',
+      description: 'Automated email campaigns and CRM workflows that nurture leads and retain customers. Welcome sequences, re-engagement, and sales automation.',
+      icon: <HiOutlineMail />
+    },
+    {
+      title: 'App Growth & UA',
+      description: 'Support mobile apps with strategic user acquisition, onboarding optimization, and retention campaigns. Lowering CPI while increasing LTV.',
+      icon: <HiOutlineDeviceMobile />
+    },
+    {
+      title: 'Analytics & Reporting',
+      description: 'Track, measure, and report on all marketing activities. Clear insights into performance, ROI, and opportunities for growth—no guesswork, just data.',
+      icon: <HiOutlinePresentationChartLine />
+    },
+    {
+      title: 'Digital Strategy & Consulting',
+      description: 'Audits, competitor analysis, and strategic planning to provide a clear roadmap to scale your marketing efforts efficiently.',
+      icon: <HiOutlineLightBulb />
+    }
+  ];
+
+  return (
+    <div className="pt-32 pb-20">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="max-w-3xl mb-20">
+          <motion.h1 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-4xl md:text-6xl font-extrabold mb-6"
+          >
+            Digital Solutions for <span className="text-primary">Modern Growth</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-text-muted leading-relaxed"
+          >
+            We offer a comprehensive suite of digital marketing and development services designed to help your brand compete and win in the digital age.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allServices.map((service, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="glass-card p-8 group hover:bg-primary transition-smooth"
+            >
+              <div className="text-4xl text-primary mb-6 group-hover:text-white transition-smooth">
+                {service.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-smooth">{service.title}</h3>
+              <p className="text-text-muted mb-6 group-hover:text-white/80 transition-smooth">
+                {service.description}
+              </p>
+              {service.platforms && (
+                <div className="flex flex-wrap gap-2">
+                  {service.platforms.map(p => (
+                    <span key={p} className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full group-hover:bg-white/20 group-hover:text-white">
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {service.tag && (
+                <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full group-hover:bg-white/20 group-hover:text-white">
+                  {service.tag}
+                </span>
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Services;
