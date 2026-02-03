@@ -69,25 +69,44 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-32 pb-20">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-3xl mb-20">
-          <motion.h1 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-4xl md:text-6xl font-extrabold mb-6"
-          >
-            Digital Solutions for <span className="text-primary">Modern Growth</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-text-muted leading-relaxed"
-          >
-            We offer a comprehensive suite of digital marketing and development services designed to help your brand compete and win in the digital age.
-          </motion.p>
+    <div className="overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 bg-gradient-to-br from-white to-purple-50">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent rounded-full blur-[120px]"></div>
         </div>
+        
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 rounded-full"
+            >
+              Our Expert Solutions
+            </motion.span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight text-primary-dark"
+            >
+              Digital Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Modern Growth</span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-xl text-text-muted mb-10 leading-relaxed max-w-2xl mx-auto"
+            >
+              We offer a comprehensive suite of digital marketing and development services designed to help your brand compete and win in the digital age.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 md:px-8 py-20">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allServices.map((service, index) => (

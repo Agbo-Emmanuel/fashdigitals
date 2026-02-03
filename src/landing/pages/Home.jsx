@@ -115,7 +115,7 @@ const Home = () => {
               variants={itemVariants}
               className="glass-card p-8 hover:transform hover:-translate-y-2 transition-smooth group"
             >
-              <div className="mb-6 p-4 bg-primary/5 rounded-2xl inline-block group-hover:bg-primary group-hover:text-white transition-smooth">
+              <div className="mb-6 p-4 bg-primary/5 rounded-2xl inline-block group-hover:text-white transition-smooth">
                 {service.icon}
               </div>
               <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
@@ -150,6 +150,75 @@ const Home = () => {
               <div className="text-4xl md:text-5xl font-extrabold text-accent mb-2">300%</div>
               <p className="text-gray-400">Avg. ROI Growth</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="section-padding bg-surface relative overflow-hidden">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 rounded-full">
+                Watch Our Story
+              </span>
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-6">How We Drive <span className="text-primary">Exponential Growth</span></h2>
+              <p className="text-text-muted text-lg mb-8 leading-relaxed">
+                Step inside Fashdigitals and see how our data-driven approach and creative precision come together to deliver extraordinary results for our partners. We don't just run ads; we build growth engines.
+              </p>
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl font-bold">1</div>
+                  <p className="font-semibold">Discovery & Data Analysis</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl font-bold">2</div>
+                  <p className="font-semibold">Strategic Implementation</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl font-bold">3</div>
+                  <p className="font-semibold">Continuous Optimization</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent opacity-20 blur-2xl group-hover:opacity-30 transition-smooth"></div>
+              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black">
+                <img 
+                  src="/src/assets/video_thumbnail_marketing.png" 
+                  alt="Video Thumbnail" 
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn">
+                    <svg className="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="glass-card p-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-bold text-primary">Featured Video</p>
+                      <p className="text-xs text-text-muted uppercase tracking-wider">The Fashdigitals Approach</p>
+                    </div>
+                    <div className="text-primary font-bold">02:45</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
