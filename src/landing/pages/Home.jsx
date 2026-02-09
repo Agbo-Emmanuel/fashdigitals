@@ -3,6 +3,11 @@ import { HiArrowRight, HiOutlineChartBar, HiOutlineSearch, HiOutlineCode, HiOutl
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import hero_image_carousel1 from "../../assets/hero_image_carousel1.jpg"
+import hero_image_carousel2 from "../../assets/hero_image_carousel2.jpg"
+import hero_image_carousel3 from "../../assets/hero_image_carousel3.jpg"
+import hero_image_carousel4 from "../../assets/hero_image_carousel4.jpg"
+import hero_image_carousel5 from "../../assets/hero_image_carousel5.jpg"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -97,18 +102,50 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-white to-purple-50">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent rounded-full blur-[120px]"></div>
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Carousel Background */}
+        <div className="absolute inset-0 z-0">
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            slidesPerView={1}
+            loop={true}
+            speed={2000}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            className="h-full w-full"
+          >
+            {[
+              hero_image_carousel1,
+              hero_image_carousel2,
+              hero_image_carousel3,
+              hero_image_carousel4,
+              hero_image_carousel5,
+            ].map((img, idx) => (
+              <SwiperSlide key={idx}>
+                <div 
+                  className="w-full h-full bg-cover bg-center transition-transform duration-[7000ms] ease-out scale-110 group-active:scale-100"
+                  style={{ 
+                    backgroundImage: `url(${img})`,
+                    animation: 'kenburns 20s infinite alternate'
+                  }}
+                ></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* Dark Overlay - Multi-layered for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/75 to-black/90 z-10"></div>
+          <div className="absolute inset-0 bg-primary/30 mix-blend-multiply z-10"></div>
+          <div className="absolute inset-0 bg-black/20 z-10"></div>
         </div>
         
-        <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="container mx-auto px-4 md:px-8 relative z-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.span 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 rounded-full"
+              className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary-light uppercase bg-primary/20 backdrop-blur-md rounded-full border border-primary/30"
             >
               Leading Digital Agency
             </motion.span>
@@ -116,15 +153,15 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight text-primary-dark"
+              className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight text-white"
             >
-              Scale Your Business With <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Data-Driven</span> Marketing
+              Scale Your Business With <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Data-Driven</span> Marketing
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-text-muted mb-10 leading-relaxed max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto"
             >
               We help brands grow through high-impact advertising, technical SEO, and conversion-focused development. No guesswork, just results.
             </motion.p>
@@ -134,10 +171,10 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link to="/contact" className="btn-primary flex gap-2">
+              <Link to="/contact" className="btn-primary flex items-center justify-center gap-2">
                 Launch Your Campaign <HiArrowRight />
               </Link>
-              <Link to="/services" className="btn-outline">
+              <Link to="/services" className="px-8 py-4 rounded-xl font-bold bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20 transition-smooth">
                 Explore Our Services
               </Link>
             </motion.div>
