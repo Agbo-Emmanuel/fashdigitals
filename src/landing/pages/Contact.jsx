@@ -1,24 +1,55 @@
 import { motion } from 'framer-motion';
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiChevronRight } from 'react-icons/hi';
+import heroImg from '../../assets/hero_image_carousel4.jpg';
 
 const Contact = () => {
   return (
-    <div className="pt-32 pb-20">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-5xl mx-auto">
+    <div className="overflow-hidden bg-surface">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden bg-black">
+        {/* Background Image with Homepage Overlays */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImg} 
+            alt="Contact Fashdigitals" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          {/* Multi-layered Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/75 to-black/90 z-10"></div>
+          <div className="absolute inset-0 bg-primary/30 mix-blend-multiply z-10"></div>
+          <div className="absolute inset-0 bg-black/20 z-10"></div>
+        </div>
+
+        <div className="container mx-auto px-4 md:px-8 relative z-20 text-center">
+          <div className="max-w-4xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary-light uppercase bg-primary/20 backdrop-blur-md rounded-full border border-primary/30">
+                Get In Touch
+              </span>
+              <h1 className="text-4xl md:text-7xl font-extrabold mb-8 leading-tight text-white">
+                Partner with Us for <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Digital Excellence</span>
+              </h1>
+              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+                Ready to take your digital presence to the next level? Our experts are here to help you navigate your growth journey and build something extraordinary.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 md:px-8 py-20">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Info */}
-            <div>
-              <motion.h1 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-6xl font-extrabold mb-8"
-              >
-                Let's Build Something <span className="text-primary">Extraordinary</span>
-              </motion.h1>
-              <p className="text-xl text-text-muted mb-12 leading-relaxed">
-                Ready to take your digital presence to the next level? Our experts are here to help you navigate your growth journey.
-              </p>
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-8 text-primary-dark">
+                Reach Out to Us
+              </h2>
 
               <div className="space-y-8">
                 <div className="flex items-start gap-6">
@@ -54,9 +85,9 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="glass-card p-8 md:p-12"
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="glass-card p-8 md:p-12 order-1 lg:order-2"
             >
               <form className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">

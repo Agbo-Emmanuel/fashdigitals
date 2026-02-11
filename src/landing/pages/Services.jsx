@@ -5,6 +5,7 @@ import {
   HiOutlineMail, HiOutlineDeviceMobile, HiOutlinePresentationChartLine, 
   HiOutlineLightBulb 
 } from 'react-icons/hi';
+import heroImg from '../../assets/hero_image_carousel3.jpg';
 
 const Services = () => {
   const allServices = [
@@ -69,20 +70,28 @@ const Services = () => {
   ];
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 bg-gradient-to-br from-white to-purple-50">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent rounded-full blur-[120px]"></div>
+      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 overflow-hidden bg-black">
+        {/* Background Image with Homepage Overlays */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImg} 
+            alt="Digital Solutions" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          {/* Multi-layered Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/75 to-black/90 z-10"></div>
+          <div className="absolute inset-0 bg-primary/30 mix-blend-multiply z-10"></div>
+          <div className="absolute inset-0 bg-black/20 z-10"></div>
         </div>
         
-        <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="container mx-auto px-4 md:px-8 relative z-20 text-center">
+          <div className="max-w-4xl mx-auto">
             <motion.span 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 rounded-full"
+              className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary-light uppercase bg-primary/20 backdrop-blur-md rounded-full border border-primary/30"
             >
               Our Expert Solutions
             </motion.span>
@@ -90,15 +99,16 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight text-primary-dark"
+              className="text-4xl md:text-7xl font-extrabold mb-8 leading-tight text-white"
             >
-              Digital Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Modern Growth</span>
+              Digital Solutions for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Modern Growth</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-text-muted mb-10 leading-relaxed max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto"
             >
               We offer a comprehensive suite of digital marketing and development services designed to help your brand compete and win in the digital age.
             </motion.p>
@@ -106,8 +116,7 @@ const Services = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 md:px-8 py-20">
-
+      <div className="container mx-auto px-4 md:px-8 py-20 bg-black">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allServices.map((service, index) => (
             <motion.div 
@@ -116,26 +125,26 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="glass-card p-8 group hover:bg-primary transition-smooth"
+              className="glass-card p-8 group hover:bg-white/10 border-white/10 bg-white/5 transition-smooth"
             >
-              <div className="text-4xl text-primary mb-6 group-hover:text-white transition-smooth">
+              <div className="text-4xl text-primary-light mb-6 transition-smooth">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-smooth">{service.title}</h3>
-              <p className="text-text-muted mb-6 group-hover:text-white/80 transition-smooth">
+              <h3 className="text-2xl font-bold mb-4 text-white transition-smooth">{service.title}</h3>
+              <p className="text-gray-400 mb-6 transition-smooth">
                 {service.description}
               </p>
               {service.platforms && (
                 <div className="flex flex-wrap gap-2">
                   {service.platforms.map(p => (
-                    <span key={p} className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full group-hover:bg-white/20 group-hover:text-white">
+                    <span key={p} className="px-3 py-1 bg-primary/20 text-primary-light text-xs font-bold rounded-full">
                       {p}
                     </span>
                   ))}
                 </div>
               )}
               {service.tag && (
-                <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full group-hover:bg-white/20 group-hover:text-white">
+                <span className="px-3 py-1 bg-accent/20 text-accent text-xs font-bold rounded-full">
                   {service.tag}
                 </span>
               )}
@@ -146,5 +155,6 @@ const Services = () => {
     </div>
   );
 };
+
 
 export default Services;
