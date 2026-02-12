@@ -6,6 +6,9 @@ import About from "./landing/pages/About";
 import Contact from "./landing/pages/Contact";
 import ScrollToTop from "./landing/components/ScrollToTop";
 
+import Blog from "./landing/pages/Blog";
+import BlogDetail from "./landing/pages/BlogDetail";
+
 const App = () => {
   return (
     <>
@@ -17,6 +20,8 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>
