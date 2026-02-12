@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { 
-  HiOutlineChartBar, HiOutlineSearch, HiOutlineCode, HiOutlinePencilAlt, 
-  HiOutlineUserGroup, HiOutlineDocumentText, HiOutlineLightningBolt, 
-  HiOutlineMail, HiOutlineDeviceMobile, HiOutlinePresentationChartLine, 
-  HiOutlineLightBulb 
+import {
+  HiOutlineChartBar, HiOutlineSearch, HiOutlineCode, HiOutlinePencilAlt,
+  HiOutlineUserGroup, HiOutlineDocumentText, HiOutlineLightningBolt,
+  HiOutlineMail, HiOutlineDeviceMobile, HiOutlinePresentationChartLine,
+  HiOutlineLightBulb
 } from 'react-icons/hi';
 import heroImg from '../../assets/hero_image_carousel3.jpg';
 
@@ -19,13 +19,13 @@ const Services = () => {
       title: 'Search Engine Optimization (SEO)',
       description: 'We help your business rank higher on search engines and attract quality organic traffic that converts. Covers keyword research, on-page optimization, technical SEO, content optimization, and link building.',
       icon: <HiOutlineSearch />,
-      tag: 'Sustainable Growth'
+      platforms: ['Sustainable Growth', 'Google Analytics', 'SEO-Ready']
     },
     {
-      title: 'Web Design & Development',
+      title: 'Web Design & App Development',
       description: 'We design and build fast, responsive, and conversion-focused websites. From landing pages to full corporate websites and e-commerce platforms, we prioritize UX, speed, and scalability.',
       icon: <HiOutlineCode />,
-      tag: 'SEO-Ready'
+      platforms: ['SEO-Ready', 'Mobile App Development', 'E-commerce Development', 'Web Development']
     },
     {
       title: 'Brand Design & Creative',
@@ -75,9 +75,9 @@ const Services = () => {
       <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 overflow-hidden bg-black">
         {/* Background Image with Homepage Overlays */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImg} 
-            alt="Digital Solutions" 
+          <img
+            src={heroImg}
+            alt="Digital Solutions"
             className="w-full h-full object-cover opacity-60"
           />
           {/* Multi-layered Dark Overlay */}
@@ -85,17 +85,17 @@ const Services = () => {
           <div className="absolute inset-0 bg-primary/30 mix-blend-multiply z-10"></div>
           <div className="absolute inset-0 bg-black/20 z-10"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 md:px-8 relative z-20 text-center">
           <div className="max-w-4xl mx-auto">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary-light uppercase bg-primary/20 backdrop-blur-md rounded-full border border-primary/30"
             >
               Our Expert Solutions
             </motion.span>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -104,7 +104,7 @@ const Services = () => {
               Digital Solutions for <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Modern Growth</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -119,7 +119,7 @@ const Services = () => {
       <div className="container mx-auto px-4 md:px-8 py-20 bg-black">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allServices.map((service, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
