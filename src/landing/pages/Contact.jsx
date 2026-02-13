@@ -9,9 +9,9 @@ const Contact = () => {
       <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden bg-black">
         {/* Background Image with Homepage Overlays */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImg} 
-            alt="Contact Fashdigitals" 
+          <img
+            src={heroImg}
+            alt="Contact Fashdigitals"
             className="w-full h-full object-cover opacity-60"
           />
           {/* Multi-layered Dark Overlay */}
@@ -22,7 +22,7 @@ const Contact = () => {
 
         <div className="container mx-auto px-4 md:px-8 relative z-20 text-center">
           <div className="max-w-4xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -58,7 +58,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold mb-1">Email Us</h4>
-                    <p className="text-text-muted">hello@fashdigitals.com</p>
+                    <p className="text-text-muted">contactus@fashdigitals.com</p>
+                    <p className="text-text-muted">support@fashdigitals.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -67,7 +68,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold mb-1">Call Us</h4>
-                    <p className="text-text-muted">+234 (0) 123 456 7890</p>
+                    <p className="text-text-muted">+234 (0) 810 086 8514</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -76,14 +77,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold mb-1">Visit Us</h4>
-                    <p className="text-text-muted">Digital Hub, Lagos, Nigeria</p>
+                    <p className="text-text-muted">Lagos, Nigeria</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -93,16 +94,16 @@ const Contact = () => {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2 col-span-2 md:col-span-1">
                     <label className="text-sm font-bold text-primary-dark">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="John" />
+                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Kelvin ....." />
                   </div>
                   <div className="space-y-2 col-span-2 md:col-span-1">
                     <label className="text-sm font-bold text-primary-dark">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Doe" />
+                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Leonard ...." />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-primary-dark">Work Email</label>
-                  <input type="email" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="john@company.com" />
+                  <input type="email" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="leonard@company.com" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-primary-dark">Service Needed</label>
@@ -110,6 +111,7 @@ const Contact = () => {
                     <option>Performance Marketing</option>
                     <option>SEO Optimization</option>
                     <option>Web Development</option>
+                    <option>Mobile App Development</option>
                     <option>Other Services</option>
                   </select>
                 </div>

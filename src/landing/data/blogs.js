@@ -13,7 +13,7 @@ export const blogs = [
       <p>With increasing regulations and consumer awareness, privacy is now at the forefront of digital marketing. Brands that prioritize transparency and first-party data will build more trust and see better long-term results.</p>
       <p>Stay tuned for more updates as we continue to track these exciting developments.</p>
     `,
-    author: "lexis lutor",
+    author: "Ambimbola Fasakin",
     date: "Feb 10, 2026",
     category: "Strategy",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
@@ -31,7 +31,7 @@ export const blogs = [
       <h2>3. Quality Over Quantity</h2>
       <p>Focus on creating high-quality, valuable content that answers your audience's questions. Search engines prioritize helpfulness and authority over keyword stuffing.</p>
     `,
-    author: "Sarah Johnson",
+    author: "Ejike Benjamin",
     date: "Feb 08, 2026",
     category: "SEO",
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=2074&auto=format&fit=crop"
@@ -49,7 +49,7 @@ export const blogs = [
       <h2>Differentiation</h2>
       <p>In a crowded market, your brand is what sets you apart from the competition. It's how you communicate your unique value proposition.</p>
     `,
-    author: "Michael Chen",
+    author: "Ambimbola Joseph",
     date: "Feb 05, 2026",
     category: "Branding",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
