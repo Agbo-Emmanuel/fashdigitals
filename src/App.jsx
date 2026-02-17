@@ -5,9 +5,11 @@ import Services from "./landing/pages/Services";
 import About from "./landing/pages/About";
 import Contact from "./landing/pages/Contact";
 import ScrollToTop from "./landing/components/ScrollToTop";
-
 import Blog from "./landing/pages/Blog";
 import BlogDetail from "./landing/pages/BlogDetail";
+import AdminDashboardLayout from "./dashboard/adminDashboard/AdminDashboardLayout";
+import AdminOverview from "./dashboard/adminDashboard/AdminOverview";
+import AdminBlogs from "./dashboard/adminDashboard/AdminBlogs";
 
 const App = () => {
   return (
@@ -22,6 +24,11 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
+          </Route>
+
+          <Route element={<AdminDashboardLayout />}>
+            <Route path="/admin-overview" element={<AdminOverview />} />
+            <Route path="/admin-blogs" element={<AdminBlogs />} />
           </Route>
         </Routes>
       </BrowserRouter>
