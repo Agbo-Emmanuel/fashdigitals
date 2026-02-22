@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { HiArrowRight, HiOutlineChartBar, HiOutlineSearch, HiOutlineCode, HiOutlinePresentationChartLine } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,6 +9,8 @@ import hero_image_carousel2 from "../../assets/hero_image_carousel2.jpg"
 import hero_image_carousel3 from "../../assets/hero_image_carousel3.jpg"
 import hero_image_carousel4 from "../../assets/hero_image_carousel4.jpg"
 import hero_image_carousel5 from "../../assets/hero_image_carousel5.jpg"
+import video1 from "../../assets/WhatsApp Video 2026-02-22 at 11.00.26.mp4"
+import video2 from "../../assets/WhatsApp Video 2026-02-22 at 11.01.53.mp4"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -15,6 +18,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const Home = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const services = [
     {
       title: 'Performance Marketing',
@@ -58,44 +63,51 @@ const Home = () => {
     {
       title: "The Fashdigitals Approach",
       subtitle: "Strategy & Vision",
-      duration: "02:45",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      duration: "00:27",
+      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.00.26.mp4",
+      videoUrl: video1
     },
     {
       title: "Data-Driven Performance",
       subtitle: "Analytics & ROI",
-      duration: "03:15",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      duration: "00:18",
+      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.01.53.mp4",
+      videoUrl: video2
     },
     {
       title: "Creative Storytelling",
       subtitle: "Brand Identity",
       duration: "02:30",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video1
     },
     {
       title: "Technical Excellence",
       subtitle: "Web & SEO",
       duration: "04:00",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video2
     },
     {
       title: "Client Success Stories",
       subtitle: "Testimonials",
       duration: "05:20",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video1
     },
     {
       title: "Scaling New Frontiers",
       subtitle: "Future Tech",
       duration: "03:45",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video2
     },
     {
       title: "Behind the Scenes",
       subtitle: "Our Culture",
       duration: "02:15",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png"
+      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video1
     }
   ];
 
@@ -124,9 +136,9 @@ const Home = () => {
               hero_image_carousel5,
             ].map((img, idx) => (
               <SwiperSlide key={idx}>
-                <div 
+                <div
                   className="w-full h-full bg-cover bg-center transition-transform duration-[7000ms] ease-out scale-110 group-active:scale-100"
-                  style={{ 
+                  style={{
                     backgroundImage: `url(${img})`,
                     animation: 'kenburns 20s infinite alternate'
                   }}
@@ -139,17 +151,17 @@ const Home = () => {
           <div className="absolute inset-0 bg-primary/30 mix-blend-multiply z-10"></div>
           <div className="absolute inset-0 bg-black/20 z-10"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 md:px-8 relative z-20">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-primary-light uppercase bg-primary/20 backdrop-blur-md rounded-full border border-primary/30"
             >
               Leading Digital Agency
             </motion.span>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -157,7 +169,7 @@ const Home = () => {
             >
               Scale Your Business With <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Data-Driven</span> Marketing
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -165,7 +177,7 @@ const Home = () => {
             >
               We help brands grow through high-impact advertising, technical SEO, and conversion-focused development. No guesswork, just results.
             </motion.p>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -191,7 +203,7 @@ const Home = () => {
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -199,7 +211,7 @@ const Home = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {services.map((service, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="glass-card p-8 hover:transform hover:-translate-y-2 transition-smooth group"
@@ -247,7 +259,7 @@ const Home = () => {
       <section className="section-padding bg-surface relative overflow-hidden">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -292,13 +304,16 @@ const Home = () => {
                 >
                   <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent opacity-0 blur-xl group-hover:opacity-20 transition-smooth"></div>
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl bg-black">
-                    <img 
-                      src={video.thumbnail} 
-                      alt={video.title} 
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
                       className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-all duration-700"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <button className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn">
+                      <button
+                        onClick={() => setSelectedVideo(video)}
+                        className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn"
+                      >
                         <svg className="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
@@ -326,7 +341,7 @@ const Home = () => {
         <div className="bg-primary rounded-3xl p-8 md:p-16 relative overflow-hidden text-center text-white">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-[80px]"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/20 rounded-full -ml-32 -mb-32 blur-[80px]"></div>
-          
+
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Ready to dominate your market?</h2>
             <p className="text-white/80 text-lg mb-10">
@@ -338,6 +353,51 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedVideo(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors"
+                aria-label="Close modal"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <video
+                src={selectedVideo.videoUrl}
+                className="w-full h-full"
+                controls
+                autoPlay
+              >
+                Your browser does not support the video tag.
+              </video>
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <h3 className="text-xl font-bold text-white mb-1">{selectedVideo.title}</h3>
+                <p className="text-gray-300 text-sm">{selectedVideo.subtitle}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
