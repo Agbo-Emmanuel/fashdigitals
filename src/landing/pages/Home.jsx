@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   HiArrowRight,
   HiOutlineChartBar,
@@ -26,6 +26,7 @@ import eduis from "../../assets/eduis.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useState } from "react";
 
 const Home = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -78,59 +79,60 @@ const Home = () => {
       subtitle: "Strategy & Vision",
       duration: "00:27",
       thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.00.26.mp4",
-      videoUrl: video1
+      videoUrl: "",
     },
     {
       title: "Data-Driven Performance",
       subtitle: "Analytics & ROI",
       duration: "00:18",
       thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.01.53.mp4",
-      videoUrl: video2
+      videoUrl: "",
     },
     {
       title: "Creative Storytelling",
       subtitle: "Brand Identity",
       duration: "02:30",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: video1
+      videoUrl: "",
     },
     {
       title: "Technical Excellence",
       subtitle: "Web & SEO",
       duration: "04:00",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: video2
+      videoUrl: "",
     },
     {
       title: "Client Success Stories",
       subtitle: "Testimonials",
       duration: "05:20",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: video1
+      videoUrl: "",
     },
     {
       title: "Scaling New Frontiers",
       subtitle: "Future Tech",
       duration: "03:45",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: video2
+      videoUrl: "",
     },
     {
       title: "Behind the Scenes",
       subtitle: "Our Culture",
       duration: "02:15",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: "",
     },
   ];
 
   const projectLogos = [
-    { name: 'Glory', src: glory },
-    { name: 'Poolee', src: poolee },
-    { name: 'Smartflow', src: smartflow },
-    { name: 'Tradelenda', src: tradelenda },
-    { name: 'STN', src: stn },
-    { name: 'FBNQuest', src: fbnquest },
-    { name: 'Eduis', src: eduis }
+    { name: "Glory", src: glory },
+    { name: "Poolee", src: poolee },
+    { name: "Smartflow", src: smartflow },
+    { name: "Tradelenda", src: tradelenda },
+    { name: "STN", src: stn },
+    { name: "FBNQuest", src: fbnquest },
+    { name: "Eduis", src: eduis },
   ];
 
   return (
@@ -235,9 +237,9 @@ const Home = () => {
             Trusted by Innovative Brands & Partners
           </p>
         </div>
-        
+
         <div className="relative flex overflow-x-hidden">
-          <motion.div 
+          <motion.div
             className="flex py-4 whitespace-nowrap"
             animate={{
               x: [0, -1920],
@@ -251,15 +253,20 @@ const Home = () => {
               },
             }}
           >
-            {[...projectLogos, ...projectLogos, ...projectLogos].map((logo, idx) => (
-              <div key={idx} className="mx-12 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                <img 
-                  src={logo.src} 
-                  alt={logo.name} 
-                  className="h-12 md:h-16 w-auto object-contain max-w-[150px]"
-                />
-              </div>
-            ))}
+            {[...projectLogos, ...projectLogos, ...projectLogos].map(
+              (logo, idx) => (
+                <div
+                  key={idx}
+                  className="mx-12 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="h-12 md:h-16 w-auto object-contain max-w-[150px]"
+                  />
+                </div>
+              ),
+            )}
           </motion.div>
         </div>
       </section>
@@ -402,7 +409,10 @@ const Home = () => {
                         onClick={() => setSelectedVideo(video)}
                         className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn"
                       >
-                        <svg className="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
+                        <svg
+                          className="w-6 h-6 fill-current ml-1"
+                          viewBox="0 0 24 24"
+                        >
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </button>
@@ -476,8 +486,18 @@ const Home = () => {
                 className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors"
                 aria-label="Close modal"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
 
@@ -491,8 +511,12 @@ const Home = () => {
               </video>
 
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                <h3 className="text-xl font-bold text-white mb-1">{selectedVideo.title}</h3>
-                <p className="text-gray-300 text-sm">{selectedVideo.subtitle}</p>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {selectedVideo.title}
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  {selectedVideo.subtitle}
+                </p>
               </div>
             </motion.div>
           </motion.div>
