@@ -257,7 +257,7 @@ const Home = () => {
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-12 md:h-16 w-auto object-contain max-w-[150px]"
+                    className="h-12 md:h-20 w-auto object-contain max-w-[200px]"
                   />
                 </div>
               ),
