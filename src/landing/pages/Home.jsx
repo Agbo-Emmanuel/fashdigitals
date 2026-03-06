@@ -21,6 +21,8 @@ import tradelenda from "../../assets/tradelenda.png";
 import stn from "../../assets/stn.png";
 import fbnquest from "../../assets/fbnquest.png";
 import eduis from "../../assets/eduis.png";
+import video1 from "../../assets/video1.mp4";
+import video2 from "../../assets/video2.mp4";
 
 // Import Swiper styles
 import "swiper/css";
@@ -78,50 +80,43 @@ const Home = () => {
       title: "The Fashdigitals Approach",
       subtitle: "Strategy & Vision",
       duration: "00:27",
-      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.00.26.mp4",
-      videoUrl: "",
+      videoUrl: video1,
     },
     {
       title: "Data-Driven Performance",
       subtitle: "Analytics & ROI",
       duration: "00:18",
-      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.01.53.mp4",
-      videoUrl: "",
+      videoUrl: video2,
     },
     {
       title: "Creative Storytelling",
       subtitle: "Brand Identity",
       duration: "02:30",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: "",
+      videoUrl: video1,
     },
     {
       title: "Technical Excellence",
       subtitle: "Web & SEO",
       duration: "04:00",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: "",
+      videoUrl: video2,
     },
     {
       title: "Client Success Stories",
       subtitle: "Testimonials",
       duration: "05:20",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: "",
+      videoUrl: video1,
     },
     {
       title: "Scaling New Frontiers",
       subtitle: "Future Tech",
       duration: "03:45",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: "",
+      videoUrl: video2,
     },
     {
       title: "Behind the Scenes",
       subtitle: "Our Culture",
       duration: "02:15",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
-      videoUrl: "",
+      videoUrl: video1,
     },
   ];
 
@@ -257,7 +252,7 @@ const Home = () => {
               (logo, idx) => (
                 <div
                   key={idx}
-                  className="mx-12 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  className="mx-12 flex items-center justify-center transition-all duration-500"
                 >
                   <img
                     src={logo.src}
@@ -399,10 +394,14 @@ const Home = () => {
                 >
                   <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent opacity-0 blur-xl group-hover:opacity-20 transition-smooth"></div>
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl bg-black">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
+                    <video
+                      src={video.videoUrl}
                       className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-all duration-700"
+                      muted
+                      playsInline
+                      loop
+                      onMouseOver={(e) => e.target.play()}
+                      onMouseOut={(e) => e.target.pause()}
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <button
