@@ -28,6 +28,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const Home = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const services = [
     {
       title: "Performance Marketing",
@@ -74,38 +76,44 @@ const Home = () => {
     {
       title: "The Fashdigitals Approach",
       subtitle: "Strategy & Vision",
-      duration: "02:45",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      duration: "00:27",
+      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.00.26.mp4",
+      videoUrl: video1
     },
     {
       title: "Data-Driven Performance",
       subtitle: "Analytics & ROI",
-      duration: "03:15",
-      thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      duration: "00:18",
+      thumbnail: "/src/assets/WhatsApp Video 2026-02-22 at 11.01.53.mp4",
+      videoUrl: video2
     },
     {
       title: "Creative Storytelling",
       subtitle: "Brand Identity",
       duration: "02:30",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video1
     },
     {
       title: "Technical Excellence",
       subtitle: "Web & SEO",
       duration: "04:00",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video2
     },
     {
       title: "Client Success Stories",
       subtitle: "Testimonials",
       duration: "05:20",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video1
     },
     {
       title: "Scaling New Frontiers",
       subtitle: "Future Tech",
       duration: "03:45",
       thumbnail: "/src/assets/video_thumbnail_marketing.png",
+      videoUrl: video2
     },
     {
       title: "Behind the Scenes",
@@ -390,11 +398,11 @@ const Home = () => {
                       className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-all duration-700"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <button className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn">
-                        <svg
-                          className="w-6 h-6 fill-current ml-1"
-                          viewBox="0 0 24 24"
-                        >
+                      <button
+                        onClick={() => setSelectedVideo(video)}
+                        className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-2xl hover:scale-110 transition-smooth group/btn"
+                      >
+                        <svg className="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </button>
@@ -445,6 +453,51 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedVideo(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors"
+                aria-label="Close modal"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <video
+                src={selectedVideo.videoUrl}
+                className="w-full h-full"
+                controls
+                autoPlay
+              >
+                Your browser does not support the video tag.
+              </video>
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <h3 className="text-xl font-bold text-white mb-1">{selectedVideo.title}</h3>
+                <p className="text-gray-300 text-sm">{selectedVideo.subtitle}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
