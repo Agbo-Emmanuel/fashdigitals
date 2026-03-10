@@ -23,6 +23,21 @@ import fbnquest from "../../assets/fbnquest.png";
 import eduis from "../../assets/eduis.png";
 import video1 from "../../assets/video1.mp4";
 import video2 from "../../assets/video2.mp4";
+import ai from "../../assets/ai.png";
+import canva from "../../assets/canva.png";
+import figma from "../../assets/figma.png";
+import google_adwords from "../../assets/google_adwords.png";
+import google_business from "../../assets/google_business.png";
+import googleanalytics from "../../assets/googleanalytics.png";
+import linkedin from "../../assets/linkedin.png";
+import mailchimp from "../../assets/mailchimp.png";
+import meta_business_suite from "../../assets/meta_business_suite.png";
+import openai from "../../assets/openai.png";
+import photoroom from "../../assets/photoroom.png";
+import photoshop from "../../assets/photoshop.png";
+import slack from "../../assets/slack.png";
+import twitter from "../../assets/twitter.png";
+import react from "../../assets/react.png";
 
 // Import Swiper styles
 import "swiper/css";
@@ -128,6 +143,24 @@ const Home = () => {
     { name: "STN", src: stn },
     { name: "FBNQuest", src: fbnquest },
     { name: "Eduis", src: eduis },
+  ];
+
+  const toolLogos = [
+    { name: "AI", src: ai },
+    { name: "Canva", src: canva },
+    { name: "Figma", src: figma },
+    { name: "Google Adwords", src: google_adwords },
+    { name: "Google Business", src: google_business },
+    { name: "React", src: react },
+    { name: "Google Analytics", src: googleanalytics },
+    { name: "LinkedIn", src: linkedin },
+    { name: "Mailchimp", src: mailchimp },
+    { name: "Meta Business Suite", src: meta_business_suite },
+    { name: "OpenAI", src: openai },
+    { name: "PhotoRoom", src: photoroom },
+    { name: "Photoshop", src: photoshop },
+    { name: "Slack", src: slack },
+    { name: "Twitter", src: twitter },
   ];
 
   return (
@@ -307,6 +340,45 @@ const Home = () => {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* Tools Section - Marquee */}
+      <section className="py-12 bg-white border-b border-gray-100 overflow-hidden">
+        <div className="container mx-auto px-4 mb-8">
+          <p className="text-center text-sm font-bold text-gray-400 uppercase tracking-widest">
+            Tools We Use to Deliver Excellence
+          </p>
+        </div>
+
+        <div className="relative flex overflow-x-hidden">
+          <motion.div
+            className="flex py-4 whitespace-nowrap"
+            animate={{
+              x: [0, -2800],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 40,
+                ease: "linear",
+              },
+            }}
+          >
+            {[...toolLogos, ...toolLogos].map((tool, idx) => (
+              <div
+                key={idx}
+                className="mx-10 flex items-center justify-center transition-all duration-500"
+              >
+                <img
+                  src={tool.src}
+                  alt={tool.name}
+                  className="h-12 md:h-20 w-auto object-contain max-w-[200px]"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* Stats Section */}
