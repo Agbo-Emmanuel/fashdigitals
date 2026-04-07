@@ -511,6 +511,82 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Sub-Projects Section */}
+      <section className="section-padding bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 rounded-full"
+            >
+              Our Ecosystem
+            </motion.span>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">
+              Built Under <span className="text-primary">Fashdigitals</span>
+            </h2>
+            <p className="text-text-muted max-w-xl mx-auto">
+              Explore the products and platforms we've built to power modern businesses.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <motion.a
+              href="https://circleloop.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="group relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-xl cursor-pointer"
+            >
+              {/* Gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-accent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500 rounded-3xl" />
+
+              {/* Animated ring */}
+              <div className="absolute inset-0 rounded-3xl border-2 border-white/10 group-hover:border-white/30 transition-colors duration-500" />
+
+              <div className="relative z-10 p-8 sm:p-10 flex flex-col items-center text-center gap-5">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    <circle cx="12" cy="12" r="9" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a9 9 0 0 1 0 18M12 3a9 9 0 0 0 0 18M3 12h18" />
+                  </svg>
+                </div>
+
+                {/* Badge */}
+                <span className="px-3 py-1 text-[11px] font-bold tracking-widest uppercase bg-white/15 text-white/80 rounded-full">
+                  Sub-Project
+                </span>
+
+                {/* Title */}
+                <div>
+                  <h3 className="text-3xl font-extrabold text-white mb-2 tracking-tight">
+                    CircleLoop
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed max-w-xs mx-auto">
+                    A modern platform built by Fashdigitals. Explore seamless experiences designed to connect and grow communities.
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-2 flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-primary font-bold text-sm shadow-lg group-hover:shadow-white/30 group-hover:scale-105 transition-all duration-300">
+                  Visit CircleLoop
+                  <HiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+            </motion.a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="section-padding py-20 pb-32">
         <div className="bg-primary rounded-3xl p-8 md:p-16 relative overflow-hidden text-center text-white">
