@@ -113,21 +113,10 @@ const Footer = () => {
             </h4>
             <ul className="space-y-4 text-gray-300">
               <li className="flex flex-col">
-                <span className="text-xs uppercase text-accent font-bold">
-                  Email Us:
-                </span>
-                <a
-                  href="mailto:contactus@fashdigitals.com"
-                  className="hover:text-white transition-smooth"
-                >
-                  contactus@fashdigitals.com
-                </a>
-                <a
-                  href="malito:support@fashdigitals.com"
-                  className="hover:text-white transition-smooth"
-                >
-                  support@fashdigitals.com
-                </a>
+                <span className="text-xs uppercase text-accent font-bold">Email Us:</span>
+                <a href="mailto:contactus@fashdigitals.com" className="hover:text-white transition-smooth">contactus@fashdigitals.com</a>
+                <a href="malito:support@fashdigitals.com" className="hover:text-white transition-smooth">support@fashdigitals.com</a>
+                <a href="malito:support@fashdigitals.com" className="hover:text-white transition-smooth"> abimbola@fashdigitals.com</a>
               </li>
               <li className="flex flex-col">
                 <span className="text-xs uppercase text-accent font-bold">
