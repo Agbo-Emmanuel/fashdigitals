@@ -1,8 +1,88 @@
-import { motion } from 'framer-motion';
-import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiChevronRight } from 'react-icons/hi';
-import heroImg from '../../assets/hero_image_carousel4.jpg';
+import { motion } from "framer-motion";
+import {
+  HiOutlineMail,
+  HiOutlinePhone,
+  HiOutlineLocationMarker,
+  HiChevronRight,
+} from "react-icons/hi";
+import heroImg from "../../assets/hero_image_carousel4.jpg";
+import { useState } from "react";
+import { contact } from "../../services/user.service";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [service, setService] = useState("");
+  const [details, setDetails] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleContact = async (e) => {
+    e.preventDefault();
+
+    // Validate each field individually, showing a toast for each missing one
+    let hasError = false;
+
+    if (!firstName.trim()) {
+      toast.error("Please enter your first name");
+      hasError = true;
+    }
+    if (!lastName.trim()) {
+      toast.error("Please enter your last name");
+      hasError = true;
+    }
+    if (!email.trim()) {
+      toast.error("Please enter your work email");
+      hasError = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      toast.error("Please enter a valid email address");
+      hasError = true;
+    }
+    if (!service) {
+      toast.error("Please select a service");
+      hasError = true;
+    }
+    if (!details.trim()) {
+      toast.error("Please tell us about your project details");
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    setLoading(true);
+
+    try {
+      const payload = {
+        firstName,
+        lastName,
+        email,
+        service,
+        details,
+      };
+
+      const response = await contact(payload);
+      console.log(response);
+
+      toast.success("Your message has been sent successfully!");
+
+      // Reset form on success
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setService("");
+      setDetails("");
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="overflow-hidden bg-surface">
       {/* Hero Section */}
@@ -32,10 +112,14 @@ const Contact = () => {
               </span>
               <h1 className="text-4xl md:text-7xl font-extrabold mb-8 leading-tight text-white">
                 Partner with Us for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">Digital Excellence</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">
+                  Digital Excellence
+                </span>
               </h1>
               <p className="text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
-                Ready to take your digital presence to the next level? Our experts are here to help you navigate your growth journey and build something extraordinary.
+                Ready to take your digital presence to the next level? Our
+                experts are here to help you navigate your growth journey and
+                build something extraordinary.
               </p>
             </motion.div>
           </div>
@@ -58,7 +142,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold mb-1">Email Us</h4>
-                    <p className="text-text-muted">contactus@fashdigitals.com</p>
+                    <p className="text-text-muted">
+                      contactus@fashdigitals.com
+                    </p>
                     <p className="text-text-muted">support@fashdigitals.com</p>
                   </div>
                 </div>
@@ -90,37 +176,99 @@ const Contact = () => {
               viewport={{ once: true }}
               className="glass-card p-8 md:p-12 order-1 lg:order-2"
             >
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleContact}>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-sm font-bold text-primary-dark">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Kelvin ....." />
+                    <label className="text-sm font-bold text-primary-dark">
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+                      placeholder="Kelvin ....."
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      disabled={loading}
+                    />
                   </div>
                   <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-sm font-bold text-primary-dark">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Leonard ...." />
+                    <label className="text-sm font-bold text-primary-dark">
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+                      placeholder="Leonard ...."
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      disabled={loading}
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-primary-dark">Work Email</label>
-                  <input type="email" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="leonard@company.com" />
+                  <label className="text-sm font-bold text-primary-dark">
+                    Work Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+                    placeholder="leonard@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                  />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-primary-dark">Service Needed</label>
-                  <select className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none">
-                    <option>Performance Marketing</option>
-                    <option>SEO Optimization</option>
-                    <option>Web Development</option>
-                    <option>Mobile App Development</option>
-                    <option>Other Services</option>
+                  <label className="text-sm font-bold text-primary-dark">
+                    Service Needed
+                  </label>
+                  <select
+                    onChange={(e) => setService(e.target.value)}
+                    value={service}
+                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+                    disabled={loading}
+                  >
+                    <option value="">Select a service</option>
+                    <option value="Performance Marketing">
+                      Performance Marketing
+                    </option>
+                    <option value="SEO Optimization">SEO Optimization</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Mobile App Development">
+                      Mobile App Development
+                    </option>
+                    <option value="Other Services">Other Services</option>
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-primary-dark">Project Details</label>
-                  <textarea rows="4" className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none" placeholder="Tell us about your goals..."></textarea>
+                  <label className="text-sm font-bold text-primary-dark">
+                    Project Details
+                  </label>
+                  <textarea
+                    rows="4"
+                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+                    placeholder="Tell us about your goals..."
+                    value={details}
+                    onChange={(e) => setDetails(e.target.value)}
+                    disabled={loading}
+                  ></textarea>
                 </div>
-                <button type="submit" className="btn-primary w-full py-4 text-lg group">
-                  Send Message <HiChevronRight className="group-hover:translate-x-1 transition-transform" />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-primary w-full cursor-pointer py-4 text-lg group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <>
+                      <span className="inline-block w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message{" "}
+                      <HiChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </button>
               </form>
             </motion.div>

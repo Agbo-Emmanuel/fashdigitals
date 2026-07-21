@@ -10,6 +10,7 @@ import BlogDetail from "./landing/pages/BlogDetail";
 import AdminDashboardLayout from "./dashboard/adminDashboard/AdminDashboardLayout";
 import AdminOverview from "./dashboard/adminDashboard/AdminOverview";
 import AdminBlogs from "./dashboard/adminDashboard/AdminBlogs";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -31,6 +32,19 @@ const App = () => {
             <Route path="/admin-blogs" element={<AdminBlogs />} />
           </Route>
         </Routes>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </BrowserRouter>
     </>
   );
